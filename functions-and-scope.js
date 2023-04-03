@@ -1,3 +1,5 @@
+
+
 // Je gaat functies schrijven die we kunnen hergebruiken om een lijst met eindcijfers van studenten te checken. Je zult over de cijfers heen moeten itereren (hoe pak je dat aan?),
 // maar ook een manier moeten vinden om hetgeen dat je verzamelt ergens te bundelen. Op deze manier zul je ontdekken hoe je omgaat met scope. Pak vooral het hoofdstuk op EdHub over for-loops er nog eens bij!
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
@@ -16,6 +18,23 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6
 
+// Schrijf een for loop om elke waarde van de array te checken op de conditie 8 of hoger.
+// Doe dit met een grades.length zodat dit ook blijft werken als de array 100 entries bevat.
+// Schrijf vervolgens een functie om het aantal cijfers met een 8 of hoger op te slaan.
+// Log het antwoord in de terminal.
+
+function gradesCumLaude(grades) {
+    let counter = 0;
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+            counter++;
+        }
+    }
+    return counter;
+}
+
+console.log(gradesCumLaude(grades));
+
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
@@ -27,7 +46,19 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
+function cumLaude(grades) {
+    let counter = 0;
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+            counter++;
+        }
+    }
+    return counter;
+}
 
+console.log(cumLaude(grades));
+console.log(cumLaude([6, 4, 5]));
+console.log(cumLaude([8, 9, 4, 6, 10]));
 
 
 /* Opdracht  2: Gemiddeld cijfer */
@@ -42,6 +73,23 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+// Een gemiddelde wordt berekend door alle cijfers bij elkaar op te tellen en dat vervolgens te delen door het aantal cijfers.
+// We willen dus alle cijfers bij elkaar optellen en dat vervolgens delen door de lengte van de array.
+// Hier gebruiken we weer een for loop voor om door alle cijfers heen te kunnen lopen.
+
+function averageGrade(grades) {
+    let counter = 0;
+    let total = 0;
+    for (let i = 0; i < grades.length; i++) {
+        total += grades[i];
+        counter++;
+    }
+    const average = total / counter;
+    return average.toFixed(2);
+}
+
+console.log(averageGrade(grades));
+
 
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
@@ -53,12 +101,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+console.log(averageGrade(grades));
+console.log(averageGrade([6, 4, 5]));
+console.log(averageGrade([8, 9, 4, 6, 10]));
+
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+// average.toFixed toegevoegd aan bovenstaande functie.
 
 
 /* Bonusopdracht: hoogste cijfer */
@@ -72,6 +124,22 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 9
 
+// Met een for loop alle waarden van de array langsgaan.
+// Check of het cijfer hoger is dan het vorige hoogste cijfer uit de array.
+// Als deze inderdaad hoger is wordt de variabele aangepast naar dit hoogste cijfer.
+
+function highestGrade(grades) {
+    let highestGrade = 0;
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] > highestGrade) {
+            highestGrade = grades[i];
+        }
+    }
+    return highestGrade;
+}
+
+console.log(highestGrade(grades));
+
 
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
@@ -82,3 +150,6 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // highestGrade(grades) geeft 9
 // highestGrade([6, 4, 5]) geeft 6
 // highestGrade([8, 9, 4, 6, 10]) geeft 10
+
+console.log(highestGrade([6, 4, 5]));
+console.log(highestGrade([8, 9, 4, 6, 10]));
